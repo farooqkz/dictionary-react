@@ -1,8 +1,9 @@
 import React from "react";
 import Synonyms from "./Synonyms";
 import "./Meaning.css";
+import { Meaning as MeaningT } from "./types"
 
-export default function Meaning(props) {
+export default function Meaning({ meaning }: { meaning: MeaningT }) {
   return (
     <div className="container Meaning">
       <div className="row">

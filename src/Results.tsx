@@ -1,18 +1,23 @@
 import Meaning from "./Meaning";
 import Phonetic from "./Phonetic.js";
 import AudioPlayer from "./AudioPlayer.js";
-
+import {
+  Result as ResultT,
+  Phonetic as PhoneticT,
+  Meaning as MeaningT
+} from "./types"
 import "./Results.css";
 
-export default function Result(props) {
-  if (props.results) {
+
+export default function Result({ results } : { results?: ResultT }) {
+  if (results) {
     return (
       <div className="Results">
-        <h1 className="word">{props.results.word}</h1>
+        <h1 className="word">{results.word}</h1>
         <div className="row">
           <div className="col-8"></div>
           <div className="col-2">
-            {props.results.phonetics.map(function (phonetic, index) {
+            {results.phonetics.map((phonetic: PhoneticT, index: number) => {
               if (index < 1) {
                 return (
                   <div key={index}>
@@ -26,24 +31,20 @@ export default function Result(props) {
           </div>
 
           <div className="col-2">
-            {props.results.phonetics.map(function (phonetic2, index) {
-              if (index < 2) {
-                return (
-                  <div key={index}>
-                    <AudioPlayer phonetic2={phonetic2} />
-                  </div>
-                );
-              } else {
-                return null;
-              }
+            {results.phonetics.map((phonetic: PhoneticT, index: number) => {
+              return (
+                <div key={index}>
+                  <AudioPlayer audio={phonetic.audio} />
+                </div>
+              );
             })}
           </div>
         </div>
 
-        <br></br>
+        <br />
         <div className="horizontal"></div>
 
-        {props.results.meanings.map(function (meaning, index) {
+        {results.meanings.map((meaning: MeaningT, index: number) {
           return (
             <div key={index}>
               <Meaning meaning={meaning} />

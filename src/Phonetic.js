@@ -1,9 +1,9 @@
 import "./Phonetic.css";
 
-export default function Phonetic(props) {
+export default function Phonetic({ text }: { text: string }) {
   return (
     <div className="Phonetic">
-      <div>{props.phonetic.text}</div>
+      <div>{text}</div>
     </div>
   );
 }

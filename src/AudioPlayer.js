@@ -3,26 +3,25 @@ import "./AudioPlayer.css";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 
-export default function AudioPlayer(props) {
+export default function AudioPlayer({ audio }: { audio?: string }) {
   // console.log(props.audio.phonetics);
-  const [isPlaying, setPlaying] = useState(false);
+  const [isPlaying, setPlaying] = useState<boolean>(false);
   const audioPlay = useRef();
 
   const togglePlayPause = () => {
-    const prevValue = isPlaying;
-    setPlaying(!prevValue);
-    if (!prevValue) {
+    if (!isPlaying) {
       audioPlay.current.play();
     } else {
       audioPlay.current.pause();
     }
+    setPlaying(!isPlaying);
   };
-  if (props.phonetic2.audio) {
+  if (audio) {
     return (
       <div>
         <audio
           ref={audioPlay}
-          src={props.phonetic2.audio}
+          src={audio}
           preload="metadata"
         ></audio>
         <button onClick={togglePlayPause} className="btn btn-light playPause">

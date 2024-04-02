@@ -6,7 +6,6 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.26.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.3.1",
@@ -29,12 +28,21 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ff 48"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.3",
+    "@lingui/cli": "^4.7.2",
+    "@lingui/macro": "^4.7.2",
+    "babel-plugin-macros": "^3.1.0",
+    "prettier": "^3.2.5",
+    "tslint": "^6.1.3"
   }
 }
